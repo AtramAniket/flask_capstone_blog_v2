@@ -34,7 +34,9 @@
             </div>
         </nav>
         <!-- Page Header-->
-        {% include "header.html" %}
+        {% with title = "Aniket's Blog", image_url = "static/assets/img/home-bg.jpg", subtext = "A Collection of Aniket's Random Musings" %}
+            {% include "header.html" %}
+        {% endwith %}
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -44,13 +46,13 @@
                         <hr class="my-4" />
                         <!-- Post preview-->
                         <div class="post-preview">
-                            <a href="/post">
+                            <a href="{{url_for('get_post', post_id = post.id)}}">
                                 <h2 class="post-title">{{post.title}}</h2>
                                 <h3 class="post-subtitle">{{post.subtitle}}</h3>
                             </a>
                             <p class="post-meta">
                                 Posted by
-                                <a href="#!">{{ author }}</a>
+                                <a href="{{ url_for('about_me') }}">{{ author }}</a>
                                 on {{ date }}
                             </p>
                         </div>

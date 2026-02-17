@@ -24,10 +24,11 @@ def about_me():
 def contact_me():
     return render_template("contact.html")
 
-# "/post"
-@app.route("/post")
-def sample_post():
-    return render_template("post.html")
+# "/post/:id"
+@app.route("/post/<int:post_id>")
+def get_post(post_id):
+    post = blog.get_post_by_id(post_id)
+    return render_template("post.html", blog_post = post)
 
 if __name__ == "__main__":
     app.run(debug = True)

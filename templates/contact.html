@@ -34,7 +34,9 @@
             </div>
         </nav>
         <!-- Page Header-->
-        {% include "header.html" %}
+        {% with title = "Contact", image_url = "static/assets/img/contact-bg.jpg" %}
+            {% include "header.html" %}
+        {% endwith %}
         <!-- Main Content-->
         <main class="mb-4">
             <div class="container px-4 px-lg-5">
