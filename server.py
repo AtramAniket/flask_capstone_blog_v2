@@ -11,7 +11,7 @@ blog = Post()
 @app.route("/")
 def home():
     date_today = dt.datetime.now().strftime("%b, %d %Y")
-    posts = blog.get_all_blog_posts()
+    posts = blog.posts
     return render_template("index.html", blog_posts = posts, author = "Aniket Atram", date = date_today)
 
 # "/about"
