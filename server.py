@@ -1,17 +1,18 @@
 from flask import Flask, render_template
-from dotenv import load_dotenv
-import os
+from post import Post
+import datetime as dt
 
-load_dotenv()
-
-BLOG_API = os.getenv("BLOG_API")
 
 app = Flask(__name__)
+
+blog = Post()
 
 # "/"
 @app.route("/")
 def home():
-    return render_template("index.html")
+    date_today = dt.datetime.now().strftime("%b, %d %Y")
+    posts = blog.get_all_blog_posts()
+    return render_template("index.html", blog_posts = posts, author = "Aniket Atram", date = date_today)
 
 # "/about"
 @app.route("/about")
